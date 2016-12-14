@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>路由</title>
+		<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+	  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+	  <meta HTTP-EQUIV="expires" CONTENT="0">
+	  <meta name="keywords" content="" />
+	  <meta name="description" content="" />
+	  <meta name="apple-touch-fullscreen" content="yes" />
+	  <meta name="format-detection" content="telephone=no" />  
+	  <meta name="apple-mobile-web-app-capable" content="yes" />
+	  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	  <meta http-equiv="Expires" content="-1" />
+	  <meta http-equiv="pragram" content="no-cache" />
+	  <meta name="screen-orientation" content="portrait">
+	  <meta name="x5-orientation" content="portrait">
+	  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	</head>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<body>
+		<div id="app">
+			<header class="header">
+				<h3>头部导航</h3>
+			</header>
+			<router-view class="cont"></router-view>
+			<footer class="footer">
+				<ul>
+					<li><router-link to="/home">Home</router-link></li>
+					<li><router-link to="/about">About</router-link></li>
+					<li><router-link to="/product">product</router-link></li>
+				</ul>
+			</footer>
+		</div>
+	</body>
+	<script>
+		const Home = {template:"<div>这是home页面！</div>"}
+		const About = {template:"<div>这是About页面！</div>"}
+		const Product = {template:"<div>这是Product页面！</div>"}
+		
+		const routes = [
+			{ path : '/home',component : Home },
+			{ path : '/about',component : About },
+			{ path : '/product',component : Product },
+		]
+		const router = new VueRouter({
+			routes
+		})
+		const App = new Vue({
+			router
+		}).$mount("#app")
+	</script>
+	<style scoped>
+		*{
+			margin:0;
+			padding:0;
+		}
+		html,body{
+			width:100%;
+			height:100%;
+			overflow: hidden;
+		}
+		html{
+			font-size:625%;
+		}
+		body{
+			font-size:0.16rem;
+		}
+		.aColor{
+			color:red;
+		}
+		#app{
+			width:100%;
+			height:100%;
+			display: -webkit-flex;
+			-webkit-flex-direction: column;
+		}
+		.header{
+			width:100%;
+			height:0.5rem;
+			background:deepskyblue;
+		}
+		.header h3{
+			text-align: center;
+			line-height: 0.5rem;
+			font-size:0.18rem;
+			color:#fff;
+		}
+		.cont{
+			-webkit-flex-grow: 1;
+		}
+		.footer{
+			width:100%;
+			height:0.5rem;
+			border-top:1px solid #ccc;
+		}
+		.footer ul{
+			list-style: none;
+			width:100%;
+			display: -webkit-flex;
+		}
+		.footer ul li{
+			-webkit-flex-grow: 1;
+			text-align: center;
+			line-height: 0.5rem;
+			width:100%;
+		}
+		.footer ul li a{
+			text-decoration: none;
+			font-size:0.20rem;
+			color:#000;
+		}
+	</style>
+</html>
